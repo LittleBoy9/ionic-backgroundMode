@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Teachers</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-virtual-scroll [items]="teacherList">
+            
+
+    <ion-card style = "min-height: 100px;" *virtualItem="let item" style = "text-align: center; padding:2px" >
+   <ion-item>
+    <ion-avatar slot="start">
+      <ion-img  [src] ="item.Imageurl"></ion-img>
+    </ion-avatar>
+    <ion-label>
+      <span style="width: 100%; float: left;">
+        <h5 style=" padding-left: 10px; font-size: 13px; color: #005580; font-weight: 600">{{ item.name | titlecase}}</h5>
+<p style=" padding-left: 10px;">{{ item.subject | titlecase}}</p>
+    </span>
+    </ion-label>
+  </ion-item>
+  </ion-card>
+  </ion-virtual-scroll>
+  <ion-img *ngIf = "noDataFound" src="assets/icon/nodata.jpg"></ion-img>
+</ion-content>

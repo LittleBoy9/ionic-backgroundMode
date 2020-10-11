@@ -1,0 +1,47 @@
+
+    .innerMessage{
+        display: inline-block;
+        padding: 5px 10px;
+        background-color:rgb(155, 197, 248);
+        margin: 5px;
+        color: black;
+        border-radius: 3px;
+      }
+  
+      .yourMessage{
+          display: inline-block;
+          padding: 5px 10px;
+          background-color: #bd7fe0;
+          margin: 5px;
+          color: white;
+          border-radius: 3px;
+        }
+    
+        
+      .yourMessageuserName {
+        font-weight: bold;
+        font-size: 70%;
+        color:black
+      }
+  
+      .innerMessageuserName {
+          font-weight: bold;
+          font-size: 70%;
+          color:white
+        }
+      .message {
+        font-size: 100%;
+      }
+      .message:after {
+        content: '';
+        display: block;
+        clear: both;
+      }
+      .messageLeft {
+        float: left;
+      }
+    
+      .messageRight {
+        float: right;
+      }
+  

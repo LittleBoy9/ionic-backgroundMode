@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <!-- <ion-button (click)="onOpenMenu()">
+        Open
+      </ion-button> -->
+    </ion-buttons>
+    <ion-title>FEES </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding  >
+  <table style="width:100%" *ngFor="let invoices of invoices ;let i=index">
+    <tr>
+       <td>
+  <ion-card  color="secondary" class ="exam-card" 
+  [routerLink]="['/fee-detail', invoices.student_id,invoices.name,invoices.amount,invoices.totalpaid]">
+    <ion-card-header class ="card-header">
+      <ion-card-subtitle>
+        <ion-chip  style ="color:white">
+          <ion-icon name="cash"></ion-icon>
+        <ion-label>Total Fee: {{invoices.amount}}</ion-label>
+      </ion-chip></ion-card-subtitle>
+      <ion-card-title>{{invoices.name | titlecase}}: {{invoices.amount-invoices.totalpaid}} </ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      Total Fee for {{invoices.name | titlecase}} was  {{invoices.amount}} ,{{invoices.amount-invoices.totalpaid}} still pending.
+    </ion-card-content>
+  </ion-card>
+       </td>
+    </tr>
+  </table>
+  <ion-img *ngIf = "noDataFound" src="assets/icon/nodata.jpg"></ion-img>
+</ion-content>

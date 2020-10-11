@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+
+    </ion-buttons>
+    <ion-title>Exams</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" >
+  <table style="width:100%" *ngFor="let studentNameData of ParentstudentService.studentNameData ;let i=index" >
+    <tr>
+       <td>
+  <ion-card  color="secondary" class ="exam-card" 
+  [routerLink]="['/exam-detail', studentNameData.student_id,studentNameData.class_id,studentNameData.name]">
+    <ion-card-header class ="card-header">
+      <ion-card-subtitle>
+        <ion-chip  style ="color:white">
+          <ion-icon style ="color:white" name="ribbon"></ion-icon>
+        <ion-label>Results of</ion-label>
+      </ion-chip></ion-card-subtitle>
+      <ion-card-title>{{studentNameData.name}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      
+    </ion-card-content>
+  </ion-card>
+  </td>
+    </tr>
+  </table>
+</ion-content>

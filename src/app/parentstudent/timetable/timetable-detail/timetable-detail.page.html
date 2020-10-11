@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" >
+      <ion-back-button defaultHref="/timetable"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{studentName| titlecase}}'s Class Routine </ion-title>
+  </ion-toolbar>
+  <ion-grid>
+    <ion-row style ="padding-top: 10%;">
+    <ion-tabs  >
+      <ion-tab-bar  >
+        <ion-tab-button   *ngFor="let week of week ;let i=index" (click)="open( i)" 
+        [ngClass] ="week==selectedDay ? 'selected-tab':'' " >
+          <ion-icon name="calendar"></ion-icon>
+          <ion-label>{{week}}</ion-label>
+          
+        </ion-tab-button>
+    
+      </ion-tab-bar>
+    </ion-tabs>
+  </ion-row>
+  </ion-grid>
+ 
+</ion-header>
+
+<ion-content padding>
+ 
+
+  
+  <ion-list  *ngFor="let particularData of particularDayData ;let i=index">
+    <ion-item >
+      <ion-item>
+        <ion-icon name="book" slot="start" style="zoom:1.0; color: #fff;background-color: #71CB88; font-size: 30px; padding: 5px; border-radius: 50% "> </ion-icon>
+        <ion-label >
+          <ion-chip>
+            <h2 style=" font-size: 13px; font-weight: 600; color: #E41D30; letter-spacing: .5px">{{particularData.subject| titlecase}}</h2>
+          </ion-chip>
+          <h4 style="padding-left: 5px">{{particularData.start}} - {{particularData.end}} </h4>
+          
+          <ion-label style="padding-left: 5px; font-size: 12px">{{particularData.subjectType}}</ion-label>
+          
+        </ion-label>
+        
+      </ion-item>
+    </ion-item>
+  
+    </ion-list>
+    <ion-img *ngIf = "noDataFound" src="assets/icon/nodata.jpg"></ion-img>
+
+  
+ 
+  
+</ion-content>

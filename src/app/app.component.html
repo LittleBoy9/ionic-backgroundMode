@@ -1,0 +1,133 @@
+<ion-app>
+  <ion-menu side="start">
+    <ion-header>
+      <!-- <ion-toolbar>
+        <ion-item margin-bottom>
+          <ion-avatar slot="start" class="user-avatar">
+            <img src="assets/OnlyLogo.jpeg">
+          </ion-avatar>
+          <ion-label>
+            <ion-text color="medium">
+              <h1><strong>Name</strong></h1>
+            </ion-text>
+            <ion-text color="secondary">
+              <h3>
+                Address
+              </h3>
+            </ion-text>
+            
+          </ion-label>
+        </ion-item>
+      </ion-toolbar> -->
+    </ion-header>
+
+    <ion-content>
+      <ion-list>
+        <!-- <ion-menu-toggle auto-hide ="false">
+          <ion-item lines="none" routerLink="/dashboard">
+            <ion-icon name="home" slot="start"></ion-icon>
+            <ion-label>Home</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle auto-hide ="false">
+          <ion-item lines="none" routerLink="/student">
+            <ion-icon name="walk" slot="start"></ion-icon>
+            <ion-label>Student</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle auto-hide ="false">
+          <ion-item lines="none" routerLink="/user">
+            <ion-icon name="people" slot="start"></ion-icon>
+            <ion-label>User</ion-label>
+          </ion-item>
+        </ion-menu-toggle> -->
+<!-- 
+        <ion-menu-toggle auto-hide ="false">
+          <ion-item lines="none" routerLink="/infinite">
+            <ion-icon name="people" slot="start"></ion-icon>
+            <ion-label>User</ion-label>
+        </ion-menu-toggle> -->
+        <ion-menu-toggle auto-hide ="false">
+          <ion-item lines="none" routerLink="/dashboard">
+            <ion-icon name="home" slot="start"></ion-icon>
+            <ion-label>Home</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle auto-hide ="false">
+          <ion-item lines="none" routerLink="/fee">
+            <ion-icon name="cash" slot="start"></ion-icon>
+            <ion-label>Fees</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle auto-hide ="false">
+          <ion-item lines="none" routerLink="/stvideo">
+            <ion-icon name="desktop" slot="start"></ion-icon>
+            <ion-label>Online Class</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle auto-hide ="false">
+          <ion-item lines="none" routerLink="/stvideo">
+            <ion-icon name="document" slot="start"></ion-icon>
+            <ion-label>Notes</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+         <ion-menu-toggle auto-hide ="false">
+          <ion-item lines="none" routerLink="/attendance">
+            <ion-icon name="calendar" slot="start"></ion-icon>
+            <ion-label>Attendance</ion-label>
+          </ion-item>
+        </ion-menu-toggle> 
+         <ion-menu-toggle auto-hide ="false">
+          <ion-item lines="none" routerLink="/exam">
+            <ion-icon name="clipboard" slot="start"></ion-icon>
+            <ion-label>Exam</ion-label>
+          </ion-item>
+        </ion-menu-toggle> 
+        
+        <ion-menu-toggle auto-hide ="false">
+          <ion-item lines="none" routerLink="/timetable">
+            <ion-icon name="clock" slot="start"></ion-icon>
+            <ion-label>Routine</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+         
+        <ion-menu-toggle auto-hide ="false">
+          <ion-item lines="none" routerLink="/teacher">
+            <ion-icon name="people" slot="start"></ion-icon>
+            <ion-label>Teachers</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle auto-hide ="false">
+          <ion-item lines="none" routerLink="/subject">
+            <ion-icon name="book" slot="start"></ion-icon>
+            <ion-label>Subjects</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+         <ion-menu-toggle auto-hide ="false">
+          <ion-item lines="none" routerLink="/notification">
+            <ion-icon name="book" slot="start"></ion-icon>
+            <ion-label>Notifications</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-item-divider>
+        </ion-item-divider>
+
+        <ion-menu-toggle auto-hide ="false">
+          <ion-item lines="none" (click)="onLogout()" button>
+            <ion-icon name="exit" slot="start"></ion-icon>
+            <ion-label>Logout</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet main></ion-router-outlet>
+</ion-app>

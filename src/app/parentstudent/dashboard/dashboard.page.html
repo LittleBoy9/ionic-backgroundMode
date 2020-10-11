@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <!-- <ion-button (click)="onOpenMenu()">
+        Open
+      </ion-button> -->
+    </ion-buttons>
+    <ion-title>Hello {{Name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding >
+
+  <ion-slides pager="true" [options]="slideOpts" id = "slide" *ngIf="loadnotice != null">
+    <ion-slide *ngFor="let notice of topnotice ;let i=index" >
+      <ion-card  style = "min-width: 300px !important; min-height: 158px !important;">
+        <ion-card-header [ngStyle]="{backgroundColor:getColor(i)}"  style ="color:white">
+          <ion-card-subtitle>
+            <ion-chip  style ="color:white">
+              <ion-icon style ="color:white;" name="calendar"></ion-icon>
+            <ion-label>{{notice.timestamp | date: 'dd-MMM-yy'}}</ion-label>
+          </ion-chip></ion-card-subtitle>
+          <ion-card-title style ="color:white">{{notice.notice_title | uppercase}}</ion-card-title>
+        </ion-card-header>
+      
+        <ion-card-content [ngStyle]="{color:getColor(i)}">
+          {{notice.notice | titlecase}}
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+ 
+  <hr class="style7">
+  <ion-grid>
+    <ion-row class = "dash-nav"  >
+      <ion-col class ="dash-col" size ="6" routerLink="/fee" >
+        
+        <ion-icon name="cash" style="zoom:2.0;" ></ion-icon>
+        <ion-content>Fee</ion-content>
+        
+      </ion-col >
+      
+      <ion-col size ="6" routerLink="/timetable" class ="dash-col">
+        <ion-icon name="clock"  style="zoom:2.0;"></ion-icon>
+        <ion-content>Routine</ion-content>
+      </ion-col>
+
+      <ion-col size ="6" routerLink="/stvideo" class ="dash-col" *ngIf = "UserType == 'S'">
+        <ion-icon name="desktop"  style="zoom:2.0;"></ion-icon>
+        <ion-content>Online Class</ion-content>
+      </ion-col>
+
+      <ion-col size ="6" routerLink="/stvideo" class ="dash-col" *ngIf = "UserType == 'S'">
+        <ion-icon name="document"  style="zoom:2.0;"></ion-icon>
+        <ion-content>Notes</ion-content>
+      </ion-col>
+
+      <ion-col  class ="dash-col" size ="6" routerLink="/exam"  class ="dash-col">
+        <ion-icon name="clipboard" style="zoom:2.0;"></ion-icon>
+        <ion-content>Exam</ion-content>
+      </ion-col>
+
+      <ion-col size ="6"  routerLink="/attendance" class ="dash-col">
+        <ion-icon name="calendar"  style="zoom:2.0;"></ion-icon>
+        <ion-content>Attendance</ion-content>
+      </ion-col> 
+
+      <ion-col  class ="dash-col" size ="6" routerLink="/teacher"  class ="dash-col">
+        <ion-icon name="people" style="zoom:2.0;"></ion-icon>
+        <ion-content>Teachers</ion-content>
+      </ion-col>
+
+      <ion-col size ="6"  routerLink="/subject" class ="dash-col">
+        <ion-icon name="book"  style="zoom:2.0;"></ion-icon>
+        <ion-content>Subject</ion-content>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+  <hr class="style7">
+
+  
+</ion-content>

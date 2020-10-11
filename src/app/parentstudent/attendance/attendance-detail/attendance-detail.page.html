@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/attendance"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{studentName| titlecase}}'s Attendance Detail</ion-title>
+  </ion-toolbar>
+  <ion-grid>
+    <ion-row class = "feeDetail-header"  >
+      <ion-col class ="feeDetail-col" size ="4" >
+        
+        <ion-icon  name="calendar" style="zoom:2.0; color: darkgray;" ></ion-icon><br>
+        <ion-text ><span style ="font-size: 24px;"><b> {{allData.length}} </b></span></ion-text>
+        <br>
+        <ion-text style ="color: darkgray;">Total Days</ion-text>
+        
+      </ion-col >
+     
+      <ion-col class ="feeDetail-col" size ="4" >
+        
+        <ion-icon  name="calendar" style="zoom:2.0; color: darkgray;" ></ion-icon><br>
+        <ion-text ><span style ="font-size: 24px;"><b> {{studentPresent.length}} </b></span></ion-text>
+        <br>
+        <ion-text style ="color: darkgray;">Present</ion-text>
+        
+      </ion-col >
+      <ion-col class ="feeDetail-col" size ="4" >
+        
+        <ion-icon  name="thumbs-up" style="zoom:2.0; color: darkgray;" ></ion-icon><br>
+        <ion-text ><span style ="font-size: 24px;"><b> {{attendancePercntage | number : '1.0-2'}} </b></span></ion-text>
+        <br>
+        <ion-text style ="color: darkgray;">%</ion-text>
+        
+      </ion-col >
+     
+     
+    </ion-row>
+    <ion-item class="list-header" >
+      <ion-label >
+        <ion-icon  name="timer" style=" zoom:1.0; color:var(--ion-color-primary) "></ion-icon>
+        <ion-text style ="font-size: 20px; margin-left: 10px !important;">  <b>Absent Days</b></ion-text>
+      </ion-label>
+    </ion-item>
+  </ion-grid>
+  
+</ion-header>
+
+<ion-content padding>
+  <ion-row  >
+    <ion-col class ="feeDetail-col" size ="6"  style ="text-align:center " *ngFor="let Absent of studentAbsent ;let i=index">
+      <ion-card >
+      <ion-card-header style ="padding-bottom: 0px;"><ion-icon  name="calendar" style="zoom:3.0; color:var(--ion-color-primary)" ></ion-icon></ion-card-header>
+      <ion-card-content style ="padding-top: 0px;">
+      <br>
+      <ion-text ><span style ="font-size: 18px; "><b> {{Absent.date | date:'dd-MMM-yy'}}</b></span></ion-text>
+      <br>
+      <ion-text style ="color: darkgray;"></ion-text>
+    </ion-card-content>
+    </ion-card>
+  
+    </ion-col >
+   
+   
+  </ion-row>
+ 
+  
+</ion-content>

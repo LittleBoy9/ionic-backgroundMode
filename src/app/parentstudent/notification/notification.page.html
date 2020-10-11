@@ -1,0 +1,149 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>notification</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<!-- <p-toast *ngIf="deletingNotification" position="center" key="d" (onClose)="onReject()" [modal]="true" [baseZIndex]="5000">
+		  <ng-template let-message pTemplate="message">
+		      <div style="text-align: center">
+		          <i class="pi pi-exclamation-triangle" style="font-size: 3em"></i>
+		          <h3>{{message.summary}}</h3>
+		          <p>{{message.detail}}</p>
+		      </div>
+		      <div class="ui-g ui-fluid">
+		          <div class="ui-g-6" *ngIf="deletingNotification">
+		            <button type="button" pButton (click)="delete('/notification/')" label="Yes" class="ui-button-success"></button> 		              
+		          </div>
+
+		          <div class="ui-g-6" *ngIf="deletingNotification">
+		              <button type="button" pButton (click)="onRejectSingle()" label="No" class="ui-button-secondary"></button>
+		          </div>
+		      </div>
+		  </ng-template>
+	</p-toast>
+
+<p-card>
+	<p-table #dt [columns]="cols" [value]="NotificationData" [sortOrder]="1" sortField="title">
+		<ng-template pTemplate="caption" class ="ui-table-caption">
+			<div class ="ui-table-caption" >
+			    <div class="ui-g">
+				    <div class="ui-g-6  ui-sm-12" style ="text-align:left !important">
+				        <ion-button (click)="addNotification(f)"><i class="pi pi-plus-circle"></i>Add Notification</ion-button>
+				    </div>
+
+				    <div class="ui-g-6  ui-sm-12" style ="text-align:right !important">	          
+				        <input pinputtext="" placeholder="Global Search" size="50" style="width:200px;" (input)="dt.filterGlobal($event.target.value, 'contains')" type="text" class="ui-inputtext ui-corner-all ui-state-default ui-widget">
+				    </div>
+			    </div>
+		    </div>
+		</ng-template>          -->
+		<!-- HEADER SECTION -->
+<!--				<ng-template pTemplate="header">      -->
+					<!--  IF MOBILE THEN HEADER  --> 
+<!--		         	<tr *ngIf ="mobile" style ="text-align:center">
+			            <th *ngFor="let col of cols" [pSortableColumn]="col.field" pResizableColumn style="font-size: 11px">
+			              {{ col.header }}
+			              <p-sortIcon [field]="col.field"></p-sortIcon> 
+			            </th> 
+			            <th>
+			            	<p-button style ="zoom: 0.6;" icon="pi pi-check-circle"
+			              class="ui-button-success" ></p-button>
+			            </th> 
+
+			            <th>
+			            	<p-button style ="zoom: 0.6;" icon="pi pi-check-circle"
+			              class="ui-button-success" ></p-button>
+			            </th>
+			                  
+		            </tr>        
+		           
+		          	<tr *ngIf ="!mobile" style ="text-align:center">		          		
+			            <th *ngFor="let col of cols" [pSortableColumn]="col.field" pResizableColumn style="font-size: 11px">
+			              {{ col.header }}
+			              <p-sortIcon [field]="col.field"></p-sortIcon> 
+			            </th> 
+			            <th>
+			            	<p-button style ="zoom: 0.6;" icon="pi pi-check-circle"
+			              class="ui-button-success" ></p-button>
+			            </th>
+
+			            <th>
+			            	<p-button style ="zoom: 0.6;" icon="pi pi-check-circle"
+			              class="ui-button-success" ></p-button>
+			            </th>
+
+			        </tr>
+			    </ng-template>
+			    
+	  
+		<ng-template pTemplate="body" let-rowData let-columns="cols">
+			<tr [pSelectableRow]="rowData" style ="text-align:center" >			     
+			   <td *ngFor="let col of cols" [ngStyle]="{'width': col.width}" >
+			        {{ rowData[col.field] }}			             
+			   </td>
+
+			   <td>
+			   	  <ion-button (click)="send_notification(rowData)">Send</ion-button>
+
+			   </td>
+			   <td > 
+			            	
+			       <button class="smallButton" title="Edit" class ="ImageButton"  (click)="editItemStoreRow(rowData, f, 'E')" ><img   src="assets/GeneralIcons/editProperty.png" style ="max-width: 20px;" ></button> 
+
+                    <button class="smallButton" title="Delete" class ="ImageButton" (click)="showConfirmForSelected(rowData,'G')"><img  src="assets/GeneralIcons/trash.png" style="max-width: 20px;" ></button>   
+
+			    </td> 				            
+			</tr>
+	    </ng-template>
+     
+        <ng-template pTemplate="summary">
+			<div style="text-align: left">  
+			    Total  {{ ItemStoreData?.length}}  Item Store
+			</div>
+        </ng-template>
+
+	</p-table>
+</p-card>
+<p-toast [style]="{marginTop: '80px'}" position="top-right" [hideTransitionOptions]="'500ms'"></p-toast> 
+
+	
+   <div >
+        <p-dialog header="Add New notification"  [(visible)]="display" [modal]="true" [autoZIndex] ="true" [minWidth] = "350" [minHeight] = "500"  #dialDetail  (onAfterHide) = "onClose(f)">     	
+           		<form #f="ngForm" >              
+            		<div class="ui-g ui-fluid">
+                		<div class="ui-g-12 ui-md-4" >
+	                        <ion-item>
+	                           <ion-icon name="paw" slot="start" class="icon-required"></ion-icon>
+	                           <ion-label position="floating">Title</ion-label>             
+	                           <ion-input type="text" [ngModel]="title" name="title" required ></ion-input>
+	                        </ion-item>                       
+                      	</div> 
+                      	
+                      	<div class="ui-g-12 ui-md-4" >
+	                        <ion-item>
+	                           <ion-icon name="paw" slot="start" class="icon-required"></ion-icon>
+	                           <ion-label position="floating">Text</ion-label>             
+	                           <ion-input type="text" [ngModel]="text" name="text" required></ion-input>
+	                        </ion-item>                       
+                      	</div>                                                                   	
+                     	<div class="ui-g-12 ui-md-4" >
+	                        <ion-item>
+	                        	<ion-icon name="paw" slot="start" class="icon"></ion-icon>
+								<ion-label position="floating">Description</ion-label>
+								<ion-textarea [ngModel]="data" name="data"></ion-textarea>
+						    </ion-item>                   
+                      	</div>                                                          
+            		</div>                
+        		</form> 
+
+        		<p-footer appendTo ="body">
+	                 <ion-button *ngIf="!edit" [disabled]="!f.valid" (click)="onNotificationSubmit(f,'N')"><i class="pi pi-plus-circle"></i>Save</ion-button>
+	                 <ion-button *ngIf="edit" [disabled]="!f.valid" (click)="onNotificationSubmit(f,'U')"><i class="pi pi-plus-circle"></i>Update</ion-button>
+	                 <ion-button (click)="onClose(f)" color="light"><i class="pi pi-plus-close"></i>Close</ion-button>
+                </p-footer>
+        </p-dialog>
+   </div>
+ -->
+</ion-content>

@@ -1,0 +1,116 @@
+// http://ionicframework.com/docs/theming/
+@import '~@ionic/angular/css/core.css';
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
+@import '../node_modules/primeng/resources/themes/nova-light/theme.css';
+@import '../node_modules/primeng/resources/primeng.min.css';
+@import '../node_modules/primeicons/primeicons.css';
+
+
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
+
+.ion-invalid.ion-touched ion-label {
+    color: var(--ion-color-danger);
+}
+.tab_list{
+    background-color:rgb(59, 65, 78);
+
+}
+.tab_button{
+     background-color:rgb(59, 65, 78);
+     border:1px;
+     border-color: white;
+     --color-selected:white;
+    --color: rgb(153, 153, 153);
+}
+
+
+body .ui-table .ui-table-thead > tr > th {
+   
+    border: 1px solid #e0e0e0;
+    font-weight: 700;
+    color: #212121;
+    font-size: 12px;
+    background-color: #ffffff;
+}
+body .ui-table .ui-sortable-column.ui-state-highlight {
+    background-color: #FFC107;
+    color: #000000;
+}
+body .ui-paginator .ui-paginator-pages .ui-paginator-page.ui-state-active {
+    background-color: #FFC107;
+    color: #000000;
+}
+
+.ui-table {
+    .ui-table-tbody {
+        > tr {
+            background: #F5F5F5;
+            font-size: 12px;
+            font-family: "cabin", sans-serif;
+        }
+
+        > tr:nth-child(odd) {
+            background-color: white;
+        }
+    }
+}
+
+body .ui-table .ui-table-caption, body .ui-table .ui-table-summary {
+    background-color: var(--background-color-table);
+    color : var(--color-table);
+    border: 0.1px solid  var(--background-color-table);
+    text-align: unset !important; 
+    padding:1px;
+}
+
+body .ui-paginator {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    padding: 0;
+}
+p-dropdown {
+    .ui-dropdown {
+      min-width:0%; // auto , initial 😀
+    }
+  }
+  .icon{
+    color: #fff;
+    padding: 3px 3px 3px 3px;
+    background-color: #11AF81;
+    border-radius: 50%;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.icon-required{
+    color: #fff;
+    padding: 3px 3px 3px 3px;
+    background-color: #800000;
+    border-radius: 50%;  
+}
+.icon-disabled{
+    color: #fff;
+    padding: 3px 3px 3px 3px;
+    background-color: grey;
+    border-radius: 50%; 
+}
+
+  body  .ui-dialog-mask {
+    position: unset !important;
+}
+
+.inputGroup{
+    max-width: fit-content; 
+    max-height:fit-content;
+}
+
+
+

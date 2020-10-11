@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/fee"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{studentName| titlecase}}'s Fee-Details</ion-title>
+  </ion-toolbar>
+  <ion-grid>
+    <ion-row class = "feeDetail-header"  >
+      <ion-col class ="feeDetail-col" size ="4" >
+        
+        <ion-icon  name="cash" style="zoom:2.0; color: darkgray;" ></ion-icon><br>
+        <ion-text ><span style ="font-size: 16px;"><b> ₹ {{fee}}</b></span></ion-text>
+        <br>
+        <ion-text style ="color: darkgray;">Total Fee</ion-text>
+        
+      </ion-col >
+      <ion-col class ="feeDetail-col" size ="4" >
+        
+        <ion-icon  name="cash" style="zoom:2.0; color: darkgray;" ></ion-icon><br>
+        <ion-text ><span style ="font-size: 16px;"><b> ₹ {{feePaid}}</b></span></ion-text>
+        <br>
+        <ion-text style ="color: darkgray;">Paid</ion-text>
+        
+      </ion-col >
+     
+      <ion-col class ="feeDetail-col" size ="4" >
+        
+        <ion-icon  name="cash" style="zoom:2.0; color: darkgray;" ></ion-icon><br>
+        <ion-text ><span style ="font-size: 16px;"><b> ₹ {{fee -feePaid}}</b></span></ion-text>
+        <br>
+        <ion-text style ="color: darkgray;">Still Due</ion-text>
+        
+      </ion-col >
+  
+     
+    </ion-row>
+    <ion-item class="list-header" >
+      <ion-label >
+        <ion-icon  name="cash" style=" zoom:1.0; color:var(--ion-color-primary) "></ion-icon>
+        <ion-text style ="font-size: 20px; margin-left: 10px !important;">  <b>Payment History</b></ion-text>
+      </ion-label>
+    </ion-item>
+  </ion-grid>
+  
+</ion-header>
+
+<ion-content padding>
+  <p-chart  type="pie" [data]="FMRatio"></p-chart>
+  <ion-list  type ="full" *ngFor="let payment of payment ;let i=index">
+    <ion-item>
+      <ion-item>
+        <ion-icon name="thumbs-up" slot="start" style="zoom:1.0; color:var(--ion-color-primary) "> </ion-icon>
+        <ion-label >
+          <h3><b>₹ {{payment.amount}}</b></h3>
+          <p style = "font-size: 12px;">{{payment.timestamp | date: 'dd-MMM-yy'}} || {{payment.method}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-item>
+  </ion-list>
+
+  
+</ion-content>

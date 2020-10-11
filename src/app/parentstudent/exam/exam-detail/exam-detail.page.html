@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" >
+      <ion-back-button defaultHref="/exam"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{studentName| titlecase}}'s Results </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card color ="light" style ="padding:3%">
+  <ion-item>
+    <ion-label position="floating">Exam</ion-label>
+    <ion-select [ngModel]="'2'" name="examid" minlength="1" (ionChange) ="selectedExam($event)">
+      <ion-select-option *ngFor="let exam of exam" value={{exam.exam_id}}>{{exam.name | titlecase}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+</ion-card >
+  <ion-card *ngIf="showResult" class = "feeDetail-header" >
+  <ion-grid>
+    
+    <ion-row  >
+      <ion-col class ="feeDetail-col" size ="4" style ="border-right: 1px solid darkgray;">
+        
+        <ion-icon  name="locate" style="zoom:2.0; color: var(--ion-color-primary);" ></ion-icon><br>
+        <ion-text ><span style ="font-size: 24px;"><b> {{totalMark}} </b></span></ion-text>
+        <br>
+        <ion-text style ="color: var(--ion-color-primary);">TOTAL</ion-text>
+        
+      </ion-col >
+     
+      <ion-col class ="feeDetail-col" size ="4" style ="border-right: 1px solid darkgray;">
+        
+        <ion-icon  name="speedometer" style="zoom:2.0; color: var(--ion-color-primary);" ></ion-icon><br>
+        <ion-text ><span style ="font-size: 24px;"><b> {{markObtain}} </b></span></ion-text>
+        <br>
+        <ion-text style ="color: var(--ion-color-primary);">OBTAIN</ion-text>
+        
+      </ion-col >
+      <ion-col class ="feeDetail-col" size ="4">
+        
+        <ion-icon  name="ribbon" style="zoom:2.0; color: var(--ion-color-primary);" ></ion-icon><br>
+        <ion-text ><span style ="font-size: 24px;"><b> {{percentMark  | number : '1.0-2'}} </b></span></ion-text>
+        <br>
+        <ion-text style ="color: var(--ion-color-primary);">%</ion-text>
+        
+      </ion-col >
+      
+     
+    </ion-row>
+  </ion-grid>
+</ion-card>
+
+<ion-row>
+  <ion-col size ="6" *ngFor="let resultData of resultData">
+    <ion-card class ="subject-mark">
+        <ion-img  style = "max-width: 60px;    display: inline-block !important;"src="assets/GeneralIcons/book.png"></ion-img>
+     <ion-text ><span >{{resultData.mark_obtained}}/{{resultData.mark_total}}</span></ion-text>
+     <br>
+     <ion-text style ="color: var(--ion-color-primary);"><b>{{resultData.subject | titlecase}}</b></ion-text>
+     <ion-content></ion-content>
+    </ion-card>
+  </ion-col>
+</ion-row>
+</ion-content>

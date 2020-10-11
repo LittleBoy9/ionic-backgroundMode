@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/stvideo"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{name | titlecase}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<div id="iframeContainer" frameborder="0" style = "text-align: center;">
+  <div id="player" frameborder="0" style = " width : 100%; height : 300px;pointer-events: none; "></div>
+  <div class="overlay" >
+    <ion-row id="toolbar" style = "margin-top: -80px;  " *ngIf = "videoLoaded">
+      <ion-col size ="1" style = "text-align: center;">
+         <ion-button (click)="playpause( )" size = "small"  color="light"> <ion-icon [name]="this.currentState ==1 || this.currentState ==3 ?'pause':'play'"></ion-icon> </ion-button>
+      </ion-col>
+      <ion-col [size]="mobile?'9':'10'"  >
+     
+          <ion-range min="0" value = "playerTimePercent" [value] = "progressbarValue" color="primary"  (ionChange) = "ProgressBar($event)"  [max]="100"
+            name="seekbar" color="medium">
+            <ion-label color="white"  slot="start"></ion-label>
+            <ion-label color="white" slot="end">{{playerCurrentTime * 1000 | date:'H:mm:ss':'UTC' }}/{{totalTime * 1000 | date:'H:mm:ss':'UTC' }}</ion-label>
+          </ion-range>
+  
+     </ion-col>
+      <ion-col size="1" >
+           <ion-button (click)="fullScreen()" size = "small"   color="light"> <ion-icon name="expand"></ion-icon> </ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+</div>
+ 
+
+ 
+  <ion-item-divider color="light">
+    <ion-label>
+       
+     
+      <h2><i style="zoom:2.0;" class="pi pi-comments"></i> <b> {{messages.length}} Comments</b></h2>
+    </ion-label>
+  </ion-item-divider>
+<ion-content padding>
+           
+  <div id="chatMessage" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+    <div class="message" *ngFor="let message of messages">
+      <div [class]="(message.userId == userId) &&(message.userType == userType) ? 'yourMessage messageRight' : 'innerMessage messageLeft'">
+        <div [class]="(message.userId == userId) &&(message.userType == userType) ? 'yourMessageuserName' : 'innerMessageuserName'">{{ message.userName}}({{ message.timestamp | date:'MMM d, h:mm a'}})</div>
+        <div class="msg">{{ message.message}}</div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar >
+    <div class="ui-g-12 ui-md-12" >
+    <div class="ui-g-10 ui-md-11" style = "background-color:white; color:black">
+    <ion-input type="text" (keyup.enter)= "sendMessage()" name="message" placeholder="Message" [(ngModel)]="message"></ion-input>
+  </div>
+  <div class="ui-g-1 ui-md-1">
+    <ion-buttons end>
+     
+      <button  class="smallButton" title="Delete"  class ="ImageButton"  (click)="sendMessage()">
+        <img   src="assets/GeneralIcons/send.png" style ="max-width: 40px;" ></button>
+    </ion-buttons>
+  </div>
+  </div>
+  </ion-toolbar>
+</ion-footer>

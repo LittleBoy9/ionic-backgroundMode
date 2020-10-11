@@ -1,0 +1,182 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start" *ngIf ="!visitor">
+      <ion-menu-button ></ion-menu-button>
+      <!-- <ion-button (click)="onOpenMenu()">
+        Open
+      </ion-button> -->
+    </ion-buttons>
+    <ion-buttons slot="end" *ngIf ="visitor">
+      
+      <ion-button  (click)="_stvideo.onLogout()"
+    ><ion-icon name="log-out"  slot="end"></ion-icon>
+    </ion-button>  
+    </ion-buttons>
+    <ion-title>Hello {{studentName}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<super-tabs>
+  <super-tabs-toolbar slot="top">
+      <!-- <super-tab-button autofocus>
+          <ion-icon name="cube"></ion-icon>
+          <ion-label>Dashboard</ion-label> 
+      </super-tab-button> -->
+
+      <super-tab-button>     	  
+          <ion-icon name="download" class="download"></ion-icon>          
+		      <ion-label>Archive</ion-label>                  
+      </super-tab-button>
+
+      <super-tab-button>     	  
+        <ion-icon name="reorder"  class="reorder"></ion-icon>          
+        <ion-label>Notes</ion-label>                  
+    </super-tab-button>
+
+      <!-- <super-tab-button>
+          <ion-icon name="globe"></ion-icon>
+          <ion-label>Live</ion-label>
+      </super-tab-button> -->
+  </super-tabs-toolbar>
+
+  <super-tabs-container>
+      <!-- <super-tab>
+          <ion-content>
+                        
+      				<ion-grid>
+      					<ion-row>
+        					<ion-tabs>
+        					  <ion-tab-bar slot="top" style=" background-color: #2F1571">
+        						  <ion-tab-button *ngFor="let day of days ;let i=index" (click)="open(i)">
+        						      <ion-label class="ionlabel" >{{ day }}</ion-label>
+                     				<ion-icon name="calendar"></ion-icon> 
+        						  
+        						  </ion-tab-button>
+        					
+        					  </ion-tab-bar>
+        					</ion-tabs>
+      				  </ion-row>
+      				</ion-grid><br><br><br>
+
+    <ion-list  *ngFor="let particularData of particularDayData ;let i=index">
+    <ion-item >
+      <ion-item>
+        <ion-icon name="book" slot="start" style="zoom:1.0; color: #fff;background-color: #71CB88; font-size: 30px; padding: 5px; border-radius: 50% "> </ion-icon>
+        <ion-label >
+          <ion-chip>
+            <h2 style=" font-size: 13px; font-weight: 600; color: #E41D30; letter-spacing: .5px">{{particularData.subject| titlecase}}</h2>
+          </ion-chip>
+          <h4 style="padding-left: 5px">{{particularData.start}} - {{particularData.end}} </h4>
+          
+          <ion-label style="padding-left: 5px; font-size: 12px">{{particularData.subjectType}}</ion-label>
+          
+        </ion-label>
+      </ion-item>
+    </ion-item>
+  
+    </ion-list>
+         
+  </ion-content>
+  </super-tab> -->
+
+      <super-tab>
+          <ion-content>            
+              <!-- <div *ngFor="let video of finalVideo">
+                <ion-card style = "text-align: center; padding:2px" [routerLink]="['/video', video.id,video.link_id]">
+                  
+                    <iframe referrerpolicy = "no-referrer"  sandbox="allow-same-origin allow-scripts"
+                     [class.thumbnail]="thumbnail" [src]="video.link" width="225"  frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen id="archive_iframe"></iframe>
+                
+	                  <span style="width: 100%; float: left;">
+		                  <h5 style=" padding-left: 10px; font-size: 13px; color: #005580; font-weight: 600">{{ video.title }}</h5>
+<p>{{ video.description }}</p>
+
+		              </span>
+		              <span style="width: 50%; float: right;">
+		                  <ion-chip style=" position: absolute; right: 10px;">
+	  						         <ion-label style=" color: blue; font-size: 13px"></ion-label>
+						          </ion-chip> 
+					       </span>
+                </ion-card>
+            </div>  -->
+
+            <ion-virtual-scroll [items]="finalVideo">
+            
+
+              <ion-card style = "min-height: 100px;" *virtualItem="let item" style = "text-align: center; padding:2px" [routerLink]="['/video', item.id,item.link_id]">
+             <ion-item>
+              <ion-avatar slot="start">
+                <ion-img  src="assets/GeneralIcons/video.png"></ion-img>
+              </ion-avatar>
+              <ion-label>
+                <span style="width: 100%; float: left;">
+                  <h5 style=" padding-left: 10px; font-size: 13px; color: #005580; font-weight: 600">{{ item.title }}</h5>
+<p>{{ item.description }}</p>
+
+              </span>
+              <span style="width: 50%; float: right;">
+                  <ion-chip style=" position: absolute; right: 10px;">
+                     <ion-label style=" color: blue; font-size: 13px"></ion-label>
+                  </ion-chip> 
+             </span>
+             
+              </ion-label>
+<div style = "text-align: right;">
+  <ion-button color="light" size="small">View</ion-button>
+</div>            
+            </ion-item>
+            </ion-card>
+            </ion-virtual-scroll>
+          
+          </ion-content>
+      </super-tab>
+
+      
+      <super-tab>
+        <ion-content>            
+           
+
+              <ion-list>
+              <ion-item *ngFor="let notes of finalNotes" (click)=" showpdf(notes.docDriveId);">
+                <ion-avatar slot="start">
+                  <img src="assets/GeneralIcons/pdf.png">
+                </ion-avatar>
+                <ion-label>
+                  <h2>{{ notes.name }}</h2>
+                  <p>{{ notes.desc }}.</p>
+                </ion-label>
+              
+              </ion-item>
+            </ion-list>
+    
+        
+        </ion-content>
+    </super-tab>
+      <!-- <super-tab>
+          <ion-content>
+            <div *ngIf=" isLive; else notLive">  
+              <div *ngFor="let live of live_Video">
+                  <iframe [class.thumbnail]="thumbnail" [src]=this.sanitizer.bypassSecurityTrustResourceUrl(live.livelink) width="100%" height="150" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen id="live_iframe"></iframe>
+              </div>
+			      </div>
+			  <ng-template #notLive>
+					<ion-card>
+						<ion-card-header>
+							<img src="assets/icon/no-data-found.png" height="100%" width="100%" alt="LOGO" >						
+						</ion-card-header>
+					</ion-card>
+			  </ng-template>
+          </ion-content>
+      </super-tab> -->
+  </super-tabs-container>
+</super-tabs>
+
+
+<p-overlayPanel #op1  [showCloseIcon]="true" [style] ="{'height':'100%',width:'100%'}">
+  
+  <iframe [src]="sanitizer.bypassSecurityTrustResourceUrl(pdfUrl)" style = "position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;"></iframe>
+</p-overlayPanel>

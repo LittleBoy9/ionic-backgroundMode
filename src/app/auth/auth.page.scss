@@ -1,0 +1,67 @@
+.padding{
+    //--background: url('../../assets/icon/bg2.jpg') no-repeat center/cover fixed;
+}
+#title{
+    font-family: 'Acme', sans-serif; font-size: 28px; 
+    letter-spacing: 1px; 
+    background-image: linear-gradient(#00802b,#00802b);
+    height: 58px;
+}  
+strong{
+	color: #00802b;
+}
+ion-img{
+    position: absolute; 
+    top: 1%;
+    left: 50%; 
+    transform: translate(-50%);     
+    width: 150px;
+}
+ion-item{
+    background-color: rgb(199, 199, 192);
+}
+ion-button{
+    position: absolute; 
+    left: 50%; 
+    transform: translate(-50%);
+  	--background: #1958A7;
+    width: 150px;
+}
+#forgot{
+  	position: absolute; 
+  	left: 50%; 
+  	transform: translate(-50%);
+}
+strong{
+    font-size: 27px;
+    font-family: 'Acme', sans-serif;
+    letter-spacing: .5px;
+    text-shadow: 2px 2px 3px #B0B0B3; 
+}
+.label{
+    font-size: 12px;
+}
+.icon{
+    color: #fff;
+    padding: 3px 3px 3px 3px;
+    background-color: #11AF81;
+    border-radius: 50%;
+}
+.eye{
+    color: gray;     
+}
+.emailpassword{
+    border: 2px solid #224821;
+    border-radius: 15px;    
+}
+.emailpassword:hover{
+    transition: .5;
+    border: 2px solid #2CD590;
+}
+a{
+    font-size: 14px;
+    color: -var(ion-color-secondary-tint);
+}
+.login{
+    background: none;
+}
